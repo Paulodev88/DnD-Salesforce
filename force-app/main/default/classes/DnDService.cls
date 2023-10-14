@@ -1,11 +1,9 @@
 public with sharing class DnDService {
-    public void DnDService() {
 
-        HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://www.dnd5eapi.co/api/');
-        req.setMethod('GET');
-        Http http = new Http();
-        HTTPResponse res = http.send(req);     
+    @future(callout=true)
+    public static void DnDService() {
+
+        HTTPResponse res = DnDApi.ApiCallOut('/api');     
          
         if (res.getStatusCode() == 200) {
            
